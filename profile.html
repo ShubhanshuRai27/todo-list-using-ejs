@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signin</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bodyP">
+    <table class="tableP">
+        <form action="/signin" method="post">
+            <h2 class="headP">Sign-In Here</h2>
+            <tr>
+                <td><label for="inputEmail">Email</label></td>
+                <td><input type="email" id="inputEmail" placeholder="Enter email" name="email" autofocus required></td>
+            </tr>
+            <tr>
+                <td><label for="inputPassword">Password</label></td>
+                <td><input type="password" id="inputPassword" placeholder="Enter password" name="password" autofocus required></td>
+            </tr>
+            <tr>
+                <td><button type="submit">SUBMIT</button></td>
+                <td><button onclick="location.href='/signup'">Sign Up</button></td>
+            </tr>
+        </form>
+    </table>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="profileBody">
+    <h1 class="profileHeader">Welcome to your profile.</h1>
+  
+    <% if(username) {%> 
+    <h2>Hello <%= username %></h2>
+    <% } %>
+
+    <h2>To-Do List</h2>
+
+        <ul>
+            <% for(var i =0; i<lists.length; i++){ %>
+                <li>
+                    <p>Task id:<%= lists[i].id %></p>
+                    <p>To-Do:<%= lists[i].item %></p>
+                    <div>
+                        <form action="/edit" method="post">
+                            Task id to edit : <input type="text" name="taskId" value="<%= lists[i].id %>" class="wid-1cm">
+                            Edited task : <input type="text" name="editedTask" placeholder="Enter edited task">
+                            <button type="submit">EDIT</button>
+                        </form>
+                    </div>
+                    <p></p>
+                    <div>
+                        <form action="/delete" method="post">
+                            Task id to delete : <input type="text" name='taskID' value="<%= lists[i].id %>" class="wid-1cm">
+                            <button type="submit">DELETE</button>
+                        </form>
+                    </div>
+                    <p></p>
+                    <div>
+                        <button>DONE</button>
+                    </div>
+                </li>
+            <% } %>
+        </ul>
+        <p></p>
+        <form action="/add" method="post">
+            Add ToDo :<input type="text" name="item" placeholder="Enter todo task">
+            <button type="submit">ADD TASK</button>
+        </form>
+        <p></p>
+        <button onclick="location.href='/signout'">SIGNOUT</button>
+</body>
+</html>

@@ -1,0 +1,31 @@
+image: node:latest
+
+cache:
+  paths:
+    - node_modules/
+Test:
+  tags:
+    - todolist
+  timeout: 30m
+  script:
+    - rm -rf .specs
+    - git config --global user.email "jindal.swapnil2@gmail.com"
+    - git config --global user.name "Swapnil"
+    - git add . && git commit -m "Merged specs deleted"
+    - git subtree add --prefix .specs/ https://workspace.konfinity.com/swapnil/todo-list-specs.git master
+    - npm install
+    - npm run test
+  only:
+    refs:
+      - master
+
+01to-do-tasks:
+  tags:
+    - todolist
+  timeout: 30m
+  script:
+    - npm install
+    - npm run test
+  only:
+    refs:
+      - 1-to-do-tasks
